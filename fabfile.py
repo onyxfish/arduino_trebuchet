@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-
 from fabric.api import *
 
 env.arduino_model = 'pro328'
@@ -16,3 +15,4 @@ def upload():
 
 def serial():
     local('ino serial')
+
