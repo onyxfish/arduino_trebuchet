@@ -1,7 +1,7 @@
 #include <Servo.h> 
 
-const byte BUTTON_PIN = 7;
-const byte SERVO_PIN = 9;
+const byte BUTTON_PIN = 6;
+const byte SERVO_PIN = 3;
 
 const int SERVO_MIN_PULSE = 650;
 const int SERVO_MAX_PULSE = 2400;
@@ -15,6 +15,7 @@ void setup()
 { 
   Serial.begin(9600);
   pinMode(BUTTON_PIN, INPUT);  
+  digitalWrite(BUTTON_PIN, HIGH);
   trebuchetServo.attach(SERVO_PIN, SERVO_MIN_PULSE, SERVO_MAX_PULSE);
   trebuchetServo.write(SERVO_CLOSED_ANGLE);
 } 
@@ -24,7 +25,7 @@ void loop()
 { 
   int buttonState = digitalRead(BUTTON_PIN);
   
-  if (buttonState == HIGH) {
+  if (buttonState == LOW) {
     Serial.println("Down");
     trebuchetServo.write(SERVO_OPEN_ANGLE);
     delay(SERVO_OPEN_TIME);
